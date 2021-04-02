@@ -8,8 +8,10 @@ def register(request):
     if request.method == 'POST':
         form = UserCreationForm(request.POST)
         if form.is_valid():
+            form.save()
             username = form.cleaned_data.get('username')
-            messages.succes(request, "{username} your account has been created successfully!!")         
+            messages.success(request, f'{username} your account has been created successfully!!')
+            return redirect('offers-page')         
     else:
         form = UserCreationForm()
     return render(request,'users/register.html',{'form':form})
