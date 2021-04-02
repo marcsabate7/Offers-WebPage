@@ -4,5 +4,4 @@ from django.http import HttpResponse
 
 
 def offers(request):
-    return HttpResponse('<h1>OFFERS PAGE</h1>')
-
+    return render(request,'offers/main.html',{'title':'Home'})
