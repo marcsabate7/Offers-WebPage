@@ -1,2 +1,2 @@
-#ProjecteWeb
-Deliverable 1
+# Projecte Web - Offers Page - Deliverable 1
+
