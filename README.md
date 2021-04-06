@@ -1,4 +1,4 @@
-<h1 align="center">Hi 👋, Offers Page - Projecte Web</h1>
+<h1 align="center">Hi 👋, Offers Page - Projecte Web - Deliverable 1</h1>
 <h3 align="center">This project consist in a offers page that publicite interesting sales from different types of websites.</h3>
 
 
