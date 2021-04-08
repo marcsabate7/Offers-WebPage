@@ -9,8 +9,7 @@ services:
             - POSTGRES_PASSWORD=postgres
     web:
         build: .
-        command: ["./wait-for-it.sh" , "db:5432" , "--strict" , "--timeout=300" , "--","python manage.py migrate"]
-        command: python manage.py runserver 0.0.0.0:8000
+        command: ["./wait-for-it.sh" , "db:5432" , "--strict" , "--timeout=300" , "--","./docker_endwait.sh"]
         volumes:
             - .:/code
         ports: 

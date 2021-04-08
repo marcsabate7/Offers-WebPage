@@ -2,4 +2,12 @@
 {% block content %}
     <h1>Home page under construction</h1>
     <p>-- Login and Register option are in the nav bar --</p>
+
+    {% for i in all_offers %}
+        <h3>{{ i.product_name}}</h3>
+        <p>{{ i.new_price}}</p>
+        <p>{{ i.old_price}}</p>
+        <p>{{ i.discount}}</p>
+    {% endfor %}
+
 {% endblock content %}
