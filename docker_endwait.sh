@@ -12,4 +12,4 @@ python manage.py migrate
 
 # Inciem el servidor
 echo "Starting server"
-python manage.py runserver 0.0.0.0:8000
+gunicorn offerscraping.wsgi:application --bind 0.0.0.0:8000

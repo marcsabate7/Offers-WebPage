@@ -126,7 +126,8 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.1/howto/static-files/
 
-STATIC_URL = '/static/'
+DEFAULT_AUTO_FIELD='django.db.models.AutoField'
+
 
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 MEDIA_URL = '/media/'
@@ -144,5 +145,9 @@ EMAIL_HOST_USER = 'offersAcademyReset@gmail.com'
 EMAIL_HOST_PASSWORD = 'offersAcademyReset123'
 
 
+
+STATIC_URL = '/static/'
+#MEDIA_ROOT = '/storage/'
+#STATIC_ROOT = '/static/'
 
 django_heroku.settings(locals())
