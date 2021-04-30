@@ -7,4 +7,4 @@ def offers(request):
     ofertas = Offer.objects.order_by('-offer_id')
 
     context = {"all_offers":ofertas}
-    return render(request,'offers/main.html',context)
+    return render(request,'offers/main.html')
