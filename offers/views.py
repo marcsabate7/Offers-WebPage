@@ -105,3 +105,4 @@ class OfferDeleteView(LoginRequiredMixin,UserPassesTestMixin, DeleteView):
         if self.request.user == offer.author:
             return True
         return False
+
