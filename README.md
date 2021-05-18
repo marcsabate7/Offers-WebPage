@@ -3,9 +3,9 @@
 
 
 <p>
-URL Heroku: https://projectoffers.herokuapp.com/
-</br>
-User: testing
+URL Heroku: https://projectoffers.herokuapp.com/</br>
+Admin Interface credentials:</br>
+User: testing</br>
 Password: testing321
 </p>
 
