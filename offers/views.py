@@ -18,7 +18,7 @@ class OfferListView(ListView):
     model = Product
     template_name = 'offers/main.html'
     context_object_name = 'all_offers'
-    ordering = ['-date_posted']
+    ordering = ['-id_product']
 
 class OfferDetailView(DetailView):
     model = Product
