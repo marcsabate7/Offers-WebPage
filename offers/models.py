@@ -37,7 +37,7 @@ class Offer(models.Model):
     date_posted = models.DateTimeField(default=timezone.now)
     author = models.ForeignKey(User,default=1,on_delete=models.CASCADE)
     url_offer = models.URLField(max_length=250,default="",help_text="*In case the offer is local put the shop website URL")
-    address = models.CharField(max_length=1000,blank=True,help_text="*Add address in case the offer is in a local site")
+    address = models.CharField(max_length=1000,blank=True,help_text="*Add address in case the offer is in a local site!")
     image = models.ImageField(default='default.jpg',upload_to='offers')
 
 
