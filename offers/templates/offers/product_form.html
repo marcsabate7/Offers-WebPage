@@ -1,16 +1,29 @@
 {% extends "offers/base.html" %}
 {% load crispy_forms_tags %}
+{% load static %}
 {% block content %}
+ 
     <div class="content-section">
         <form method="POST">
             {% csrf_token %}
             <fieldset class = "form-group">
-                <legend class="border-bottom mb-4">New Offer</legend>
+                <legend class="border-bottom mb-4">New Product</legend>
                 {{ form|crispy }}
+                <img src="{{ post.image.url }}"/>
             </fieldset>
             <div class="form-group">
-                <button class="btn btn-outline-info" type="submit">Post</button>
+                <button class="btn btn-outline-info" type="submit" href="">Submit and go back to offer</button>
             </div>
         </form>
     </div>
+
+
+    <script>
+        $.getJSON("/static/offers/categories.json", {}, function (categories) {
+            $("#id_category").autocomplete({
+                source: categories
+            });
+        });
+    </script>
+
 {% endblock content %}

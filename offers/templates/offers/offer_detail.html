@@ -1,0 +1,37 @@
+{% extends "offers/base.html" %}
+{% block content %}
+    <article class="media content-section">
+        </form>
+        <div class="mr-2">
+            <p><img class="rounded-circle article-img" src="{{ object.image.url }}" width="250" height="200"></p>
+        </div>
+        <div class="media-body">
+            <div class="article-metadata">
+                <a class="mr-2" href="#"> Author - {{ object.author }}</a>
+                <small class="text-muted">{{ object.date_posted|date:"F d, Y" }}</small>
+            </div>
+            <h2 class="article-title">{{ object.product_name }} - {{ object.company_name }} </h2>
+            <p class="article-content">Discount: {{ object.discount }}%</p>
+            <p class="article-content">Actual price: {{ object.new_price  }}€</p>
+            <p class="article-content">Old price: <del>{{ object.old_price }}€</del></p>
+            {% if object.address %}
+                <p class="article-content" style="color: red">*It's not an online offer, you can check the address below!</p>
+                <a class="btn btn-warning"style="background-color:#ABEBC6" role="button">{{object.address}} </a>
+                <a class="btn btn-warning" href={{object.url_offer}} role="button">Shop Website</a>
+            {% else %}
+                <a class="btn btn-warning" href={{object.url_offer}} role="button">URL offer</a>
+            {% endif %}
+
+        </div>
+        {% if object.author == user %}
+                <a class="btn btn-secondary mt-1 mb-1 mr-2" href="{% url 'offer-update' object.offer_id %}">Update</a>
+                <a class="btn btn-danger mt-1 mb-1 mr-2" href="{% url 'offer-delete' object.offer_id %}">Delete</a>
+        {% endif %}
+
+    </article>
+    <div class="form-group">
+        </br>
+        <a class="btn btn-primary" href="{% url 'offers-page' %}" role="button">Go to main page</a>
+    </div>
+{% endblock content %}
+

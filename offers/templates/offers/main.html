@@ -1,13 +1,18 @@
 {% extends "offers/base.html" %}
 {% block content %}
-    <h1>Home page under construction</h1>
-    <p>-- Login and Register option are in the nav bar --</p>
-
-    {% for i in all_offers %}
-        <h3>{{ i.product_name}}</h3>
-        <p>{{ i.new_price}}</p>
-        <p>{{ i.old_price}}</p>
-        <p>{{ i.discount}}</p>
+    {% for post in all_offers %}
+        <article class="media content-section">
+          <img class="rounded-circle article-img mr-2" src="{{ post.image.url }}" width="150" height="150">
+          <div class="media-body">
+            <div class="article-metadata">
+              <a class="mr-2" href="#">{{ post.author }}</a>
+              <small class="text-muted">{{ post.date_posted|date:"F d, Y" }}</small>
+            </div>
+            <h2><a class="article-title" href="{% url 'offer-detail' post.offer_id %}">{{ post.product_name }}</a></h2>
+            <p class="article-content">New price: {{ post.new_price }}€</p>
+            <p class="article-content">Old price: <del>{{ post.old_price }}€</del></p>
+          </div>
+          <a class="btn btn-warning" href={{post.url_offer}} role="button">URL offer</a>
+        </article>
     {% endfor %}
-
 {% endblock content %}

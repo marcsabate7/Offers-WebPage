@@ -1,18 +1,73 @@
 {% extends "offers/base.html" %}
+{% load crispy_forms_tags %}
+{% load static %}
 {% block content %}
-    {% for post in posts %}
-        <article class="media content-section">
-          <img class="rounded-circle article-img" src="{{ post.author.profile.image.url }}">
-          <div class="media-body">
-            <div class="article-metadata">
-              <a class="mr-2" href="#">{{ post.product_name}}</a>
-              <a class="mr-2" href="#">{{ post.new_price}}</a>
-              <a class="mr-2" href="#">{{post.old_price}}</a>
-              <a class="mr-2" href="#">{{post.discount}}</a>
-              <small class="text-muted">{{ post.date_posted|date:"F d, Y" }}</small>
+
+    <div class="content-section">
+        <form method="POST" enctype="multipart/form-data">
+            {% csrf_token %}
+            <fieldset class = "form-group">
+                <legend class="border-bottom mb-4">New Offer</legend>
+                <div class="new-product"></div>
+                    <p>In order to create an Offer you need to select one of the existent products. 
+                        If the product that you want to enter doesn't appear in the list, create a new Product here.</p>
+                    <a class="btn btn-primary" href="{% url 'product-create' %}" role="button">Create New Product</a>
+                </div>
+                {{ form|crispy }}
+            </fieldset>
+            <div class="form-group">
+                <button class="btn btn-outline-info" type="submit">Submit Offer</button>
             </div>
-            <h2><a class="article-title" href="{% url 'offer-detail' offer.id %}">{{ post.title }}</a></h2>
-          </div>
-        </article>
-    {% endfor %}
+        </form>
+    </div>
+
+
+
+    <script>
+        $(function() {
+            $.getJSON("{% static '/offers/companies.json' %}", {}, function (companies) {
+                $("#id_company_name").autocomplete({
+                    source: companies
+                });
+            });
+    
+            $("#id_address").autocomplete({
+                source: function( request, response ) {
+                    $.ajax({
+                        url: "https://secure.geonames.org/search",
+                        dataType: "jsonp",
+                        data: {
+                            featureClass: "P",
+                            type: "json",
+                            maxRows: 10,
+                            name_startsWith: request.term,
+                            username: "rogargon"                            // using this user because after register continue saying user not registered xD sorry
+                        },
+                        success: function( data ) {
+                            console.log(data)
+                            response( $.map( data.geonames, function( item ) {
+                                return {
+                                    label: item.name + (item.adminName1 ? ", " + item.adminName1 : "") + ", " + item.countryName,
+                                    value: item.name,
+                                    stateOrProvince: item.adminName1,
+                                    countryName: item.countryName
+                                }
+                            }));
+                        }
+                    });
+                },
+                minLength: 2,
+                select: function( event, ui ) {
+                    var name = ui.item.label + ui.item.value + ui.item.stateOrProvince + ui.item.countryName;
+                    if (ui.item) {
+                        $("#id_address").val(ui.item);                                                      // comprove this
+
+                    }
+                }
+            });
+        });
+
+    </script>
+
+
 {% endblock content %}

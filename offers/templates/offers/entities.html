@@ -1,0 +1,12 @@
+{% extends "offers/base.html" %}
+{% block content %}
+    {% if user.is_authenticated %}
+        <h1 class="article-title">Users are able to add offers into the page</h1>
+    {% else %}
+        <h1 class="article-title">Users are able to add offers into the page</h1>
+        <p style="color: red;">*Only users with an account can make an Offer, Sign In or Register below</p>
+        
+    {% endif %}
+    </br>
+    <a href="{% url 'offer-create' %}" class="btn btn-primary btn-lg active" role="button" aria-pressed="true">Offer</a>
+{% endblock content %}

@@ -8,12 +8,27 @@
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <link rel="stylesheet" type="text/css" href="{% static 'offers/main.css' %}">
+    <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/smoothness/jquery-ui.css" />
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.slim.min.js" crossorigin="anonymous"
+    integrity="sha512-6ORWJX/LrnSjBzwefdNUyLCMTIsGoNP6NftMy2UAm1JBm6PRZCO1d7OHBStWpVFZLO+RerTvqX/Z9mBFfCJZ4A=="></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+
+    <style>
+       header{
+            margin-top: 90px;
+        }
+    </style>
 
     {% if title %}
         <title>Offers - {{ title }}</title>
     {% else %}
         <title>Offers</title>
     {% endif %}
+    <style>
+
+    </style>
+ 
 
 </head>
 <body>
@@ -27,7 +42,7 @@
             <div class="collapse navbar-collapse" id="navbarToggle">
               <!-- navigation bar left -->
                 <div class="navbar-nav mr-auto">
-                <!--<a class="nav-item nav-link" href="#">Offers</a>-->
+                <a class="nav-item nav-link" href="{% url 'new-entities' %}">New entities</a>
               </div>
               <!-- navigation bar right -->
               <div class="navbar-nav">
@@ -52,11 +67,63 @@
             {% endfor%}
         {% endif %}
         {% block content %}{% endblock %}
+    </div>>
+    {% if user.is_authenticated %}
+    <div class="bottom-part">
+        <!-- Footer -->
+        <footer class="text-center text-white" style="background-color: #3C3C3C;">
+          <!-- Grid container -->
+            <div class="container p-4 pb-0 footer2">
+            <!-- Section: CTA -->
+                <section class="mr-2">
+                    <p class="d-flex justify-content-center align-items-center mr-2">
+                        <span class="me-3 mr-2">Add offer!</span>
+                        <a class="btn btn-secondary mt-1 mb-1 mr-2" href="{% url 'offer-create' %}">New Offer!</a>
+                    </p>
+                </section>
+            <!-- Section: CTA -->
+            </div>
+                <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2);">
+                © 2021:
+                <a class="text-white" href="https://mdbootstrap.com/">Offers Academy</a>
+            </div>
+        </footer>
     </div>
+    {% else %}
+    <div class="bottom-part">
+        <!-- Footer -->
+        <footer class="text-center text-white" style="background-color: #3C3C3C;">
+          <!-- Grid container -->
+            <div class="container p-4 pb-0 footer2">
+            <!-- Section: CTA -->
+                <section class="mr-2">
+                    <p class="d-flex justify-content-center align-items-center mr-2">
+                        <span class="me-3 mr-2">Register here!</span>
+                        <a class="btn btn-secondary mt-1 mb-1 mr-2" href="{% url 'register-page' %}">Register</a>
+                    </p>
+                </section>
+            <!-- Section: CTA -->
+            </div>
+                <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2);">
+                © 2021:
+                <a class="text-white" href="https://mdbootstrap.com/">Offers Academy</a>
+            </div>
+        </footer>
+    </div>
+    {% endif %}
+
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.6.0/js/bootstrap.min.js" crossorigin="anonymous"
+    integrity="sha512-XKa9Hemdy1Ui3KSGgJdgMyYlUg1gM+QhL6cnlyTe2qzMCYm4nAZ1PsVerQzTTXzonUR+dmswHqgJPuwCq1MaAg=="></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/2.9.2/umd/popper.min.js" crossorigin="anonymous"
+        integrity="sha512-2rNj2KJ+D8s1ceNasTIex6z4HWyOnEYLVC3FigGOmyQCZc2eBXKgOxQmo3oKLHyfcj53uz4QMsRCWNbLd32Q1g=="></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.6.0/css/bootstrap.min.css"
+    crossorigin="anonymous" integrity="sha512-P5MgMn1jBN01asBgU0z60Qk4QxiXo86+wlFahKrsQf37c9cro517WzVSPPV1tDKzhku2iJ2FVgL67wG03SGnNA=="/>
+    <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/smoothness/jquery-ui.css" />
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    
+
+
 </body>
 </html>
