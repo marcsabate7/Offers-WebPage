@@ -5,7 +5,7 @@ Feature: List Offers
 
   Background: There are four registered Offers by same user
     Given Exists a user "user" with password "password"
-    And Exists restaurant registered by "user"
+    And Exists an offer registered by "user"
       | Product name    | New Price   | Old Price   |
       | First           | 50          | 100         |
       | Second          | 60          | 120         |
@@ -21,7 +21,7 @@ Feature: List Offers
     And The list contains 3 Offers
 
   Scenario: List the four
-    Given Exists restaurant registered by "user"
+    Given Exists an offer registered by "user"
       | Product name    | New Price   | Old Price   |
       | Fourth          | 80          | 160         |
     When I list Offers

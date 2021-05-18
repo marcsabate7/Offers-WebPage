@@ -22,10 +22,10 @@ Feature: Edit Offer
 
     Scenario: Edit owned offer registry New price
         Given I login as user "user1" with password "password"
-        When I edit the offer with Product name "OneBlade Pro"
+        When I edit the offer with name "OneBlade Pro"
             | New price | Discount  |
             | 62        | 35        |
-        Then I'm viewing the details page for an offer by "user1"
+        Then I'm viewing the details page for offer by "user1"
             | Product name  | Company name  | Url offer                                                                       | New price | Old price | Discount |
             | OneBlade Pro  | Philips       | https://www.amazon.es/dp/B0771WVJX3/ref=cm_sw_em_r_mt_dp_ZY2ATH8623PK9EQXP3D0   | 62        | 95        | 35       |
         And There are 1 offers
@@ -36,7 +36,7 @@ Feature: Edit Offer
             | New price |
             | 1         |
         Then Server responds with page containing "403 Forbidden"
-        When I view the details for the offer of "OneBlade Pro"
+        When I view the details for offer "OneBlade Pro"
         Then I'm viewing the details page for offer by "user1"
             | Product name  | Company name  | Url offer                                                                       | New price | Old price | Discount |
             | OneBlade Pro  | Philips       | https://www.amazon.es/dp/B0771WVJX3/ref=cm_sw_em_r_mt_dp_ZY2ATH8623PK9EQXP3D0   | 70        | 95        | 26       |

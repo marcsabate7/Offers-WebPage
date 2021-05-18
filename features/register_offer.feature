@@ -43,12 +43,3 @@ Feature: Register Offer
             | Author    | Product name      | Image                | Company name   | New price | Old price | Discount |
             | user      | Maletín X-Line    | offers/download.png  | Bosch          | 24        | 30        | 20       |
         And There are 1 offers
-
-
-
-  
-  
-  
-  
-  
-  
