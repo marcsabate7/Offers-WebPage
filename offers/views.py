@@ -45,20 +45,6 @@ class ProductUpdateView(LoginRequiredMixin,UserPassesTestMixin, UpdateView):
 
 #####################################
 
-class CompanyCreateView(LoginRequiredMixin, CreateView):
-    model = Company
-    fields = ['company_name','city','num_workers']
-
-
-#####################################
-class MakerCreateView(LoginRequiredMixin, CreateView):
-    model = Maker
-    fields = ['company_name','city','year_build']
-
-
-
-#####################################
-
 class OfferListView(ListView):
     model = Offer
     template_name = 'offers/main.html'
