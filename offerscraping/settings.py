@@ -36,6 +36,7 @@ INSTALLED_APPS = [
     'offers.apps.OffersConfig',
     'users.apps.UsersConfig',
     'crispy_forms',
+    'behave_django',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
