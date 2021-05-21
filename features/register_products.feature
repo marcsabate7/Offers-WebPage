@@ -9,7 +9,7 @@ Feature: Register Product
           | Product name    | Company         |
           | Motocicleta     | Scalextric      |
 
-    Scenario: View Product list
+    Scenario: Registering a Product
         Given I login as user "user" with password "password321"
         When I register Product
             | Product name    | Company         |

@@ -13,12 +13,12 @@ Feature: Edit Offer
     Scenario: Try to edit an offer but not logged in
         Given I'm not logged in
         When I view the details for offer "OneBlade Pro"
-        Then There is no "edit" link available
+        Then There is no "Update" link available
 
     Scenario: Try to edit an offer but not the owner
         Given I login as user "user2" with password "password"
         When I view the details for offer "OneBlade Pro"
-        Then There is no "edit" link available
+        Then There is no "Update" link available
 
     Scenario: Edit owned offer registry New price
         Given I login as user "user1" with password "password"
