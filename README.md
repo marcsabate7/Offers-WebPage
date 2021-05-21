@@ -8,6 +8,10 @@ URL Heroku: https://projectoffers.herokuapp.com/</br>
 <strong>Admin Interface credentials:</strong></br>
 - User: testing</br>
 - Password: testing321
+</br>
+<strong>Another User credentials:</strong></br>
+- User: pepejuan</br>
+- Password: testing321
 </p>
 </br>
 </br>
