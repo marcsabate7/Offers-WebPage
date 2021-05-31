@@ -16,8 +16,8 @@
                 <div rel = "offers">
                 <div typeof = "Offer">
                 <p class="article-content">Discount: {{ object.discount }}%</p>
-                <p class="article-content"><span property="price">Actual price: {{object.new_price}}</span><span property ="priceCurrency">€</span></p>
-                <p class="article-content"> <span property="price"> Old price: <del>{{ object.old_price }}</del></span> <span property ="priceCurrency">€</span></p>
+                <p class="article-content">Actual price: <span property="price">{{object.new_price}}</span><span property ="priceCurrency">€</span></p>
+                <p class="article-content">Old price: <span property="price"><del>{{ object.old_price }}</del></span> <span property ="priceCurrency">€</span></p>
                 {% if object.address %}
                     <p class="article-content" style="color: red">*It's not an online offer, you can check the address below!</p>
                     <a class="btn btn-warning"style="background-color:#ABEBC6" role="button">{{object.address}} </a>
