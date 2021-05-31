@@ -15,4 +15,4 @@ class CreateProduct(forms.ModelForm):
 class CreateOffer(forms.ModelForm):
     class Meta:
         model = Offer
-        fields = ['offer_id','product_name','company_name','address','url_offer','new_price','old_price','discount','image']
+        fields = ['offer_id','product_name','sku','company_name','address','url_offer','new_price','old_price','discount','image']
