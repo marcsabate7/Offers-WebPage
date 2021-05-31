@@ -1,37 +1,44 @@
 {% extends "offers/base.html" %}
 {% block content %}
-    <article class="media content-section">
-        </form>
-        <div class="mr-2">
-            <p><img class="rounded-circle article-img" src="{{ object.image.url }}" width="250" height="200"></p>
-        </div>
-        <div class="media-body">
-            <div class="article-metadata">
-                <a class="mr-2" href="#"> Author - {{ object.author }}</a>
-                <small class="text-muted">{{ object.date_posted|date:"F d, Y" }}</small>
+    <div vocab="http://schema.org/" typeof="Product">
+        <article class="media content-section">
+            <div class="mr-2">
+                <p><img property="image" class="rounded-circle article-img" src="{{ object.image.url }}" width="250" height="200"></p>
             </div>
-            <h2 class="article-title">{{ object.product_name }} - {{ object.company_name }} </h2>
-            <p class="article-content">Discount: {{ object.discount }}%</p>
-            <p class="article-content">Actual price: {{ object.new_price  }}€</p>
-            <p class="article-content">Old price: <del>{{ object.old_price }}€</del></p>
-            {% if object.address %}
-                <p class="article-content" style="color: red">*It's not an online offer, you can check the address below!</p>
-                <a class="btn btn-warning"style="background-color:#ABEBC6" role="button">{{object.address}} </a>
-                <a class="btn btn-warning" href={{object.url_offer}} role="button">Shop Website</a>
-            {% else %}
-                <a class="btn btn-warning" href={{object.url_offer}} role="button">URL offer</a>
+            <div class="media-body">
+                <div class="article-metadata">
+                    <a class="mr-2">Author - {{ object.author }}</a>
+                    <small class="text-muted">{{ object.date_posted|date:'F d, Y' }}</small>
+                </div>
+                <h2 class="article-title"><span property="name"> {{ object.product_name }}</span> - <span property="brand">{{ object.company_name }}</span></h2>
+                <p class="article-content" property="sku">SKU: {{ object.sku}}</p>
+                <p class="article-content" property="description">Description: {{ object.product_name.description}}</p>
+                <div rel = "offers">
+                <div typeof = "Offer">
+                <p class="article-content">Discount: {{ object.discount }}%</p>
+                <p class="article-content"><span property="price">Actual price: {{object.new_price}}</span><span property ="priceCurrency">€</span></p>
+                <p class="article-content"> <span property="price"> Old price: <del>{{ object.old_price }}</del></span> <span property ="priceCurrency">€</span></p>
+                {% if object.address %}
+                    <p class="article-content" style="color: red">*It's not an online offer, you can check the address below!</p>
+                    <a class="btn btn-warning"style="background-color:#ABEBC6" role="button">{{object.address}} </a>
+                    <a class="btn btn-warning"style="background-color:#ABEBC6" role="button"><link property="availability" href="https://schema.org/InStock" />Disponibility: In stock</a>
+                    <a class="btn btn-warning" property="url" href={{object.url_offer}} role="button">Shop Website</a>
+                    <a class="btn btn-warning"style="background-color:grey" role="button">Valid until:<span property="priceValidUntil"> 2021-05-31</span></a>
+                {% else %}
+                    <a class="btn btn-warning"style="background-color:#ABEBC6" role="button"><link property="availability" href="https://schema.org/InStock" />Disponibility: In stock</a>
+                    <a class="btn btn-warning" property="url" href={{object.url_offer}} role="button">URL offer</a>
+                    <a class="btn btn-warning"style="background-color:grey" role="button">Valid until:<span property="priceValidUntil"> 2021-05-31</span></a>
+                {% endif %}
+                </div>
+            </div>
+            </div>
+            {% if object.author == user %}
+                    <a class="btn btn-secondary mt-1 mb-1 mr-2" property="url" href="{% url 'offer-update' object.offer_id %}">Update</a>
+                    <a class="btn btn-danger mt-1 mb-1 mr-2" property="url" href="{% url 'offer-delete' object.offer_id %}">Delete</a>
             {% endif %}
-
+        </article>
+        <div class="form-group">
+            <a class="btn btn-primary" href="{% url 'offers-page' %}" role="button" itemprop="url">Go to main page</a>
         </div>
-        {% if object.author == user %}
-                <a class="btn btn-secondary mt-1 mb-1 mr-2" href="{% url 'offer-update' object.offer_id %}">Update</a>
-                <a class="btn btn-danger mt-1 mb-1 mr-2" href="{% url 'offer-delete' object.offer_id %}">Delete</a>
-        {% endif %}
-
-    </article>
-    <div class="form-group">
-        </br>
-        <a class="btn btn-primary" href="{% url 'offers-page' %}" role="button">Go to main page</a>
     </div>
 {% endblock content %}
-
